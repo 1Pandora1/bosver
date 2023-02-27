@@ -2,7 +2,7 @@ window.onload = displayImage;
 
 var imagesArray = [
     "anime1.jpg", 
-    "anime2.jpeg", 
+    "anime2.jpg", 
     "anime3.png", 
     "anime4.png", 
     "anime5.png", 
