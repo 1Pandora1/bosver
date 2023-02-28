@@ -58,6 +58,26 @@ iframe {
 
     var app = new _app();
 </script>
+    <script type="text/javascript">
+    function goFullscreen(id) {
+        // Get the element that we want to take into fullscreen mode
+        var element = document.getElementById(id);
+
+        // These function will not exist in the browsers that don't support fullscreen mode yet,
+        // so we'll have to check to see if they're available before calling them.
+
+        if (element.mozRequestFullScreen) {
+            // This is how to go into fullscren mode in Firefox
+            // Note the "moz" prefix, which is short for Mozilla.
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+            // This is how to go into fullscreen mode in Chrome and Safari
+            // Both of those browsers are based on the Webkit project, hence the same prefix.
+            element.webkitRequestFullScreen();
+        }
+        // Hooray, now we're in fullscreen mode!
+    }
+</script>
 <div class="startthing">
 <i><a class="next">> Enter World <</a></i>
 </div>
@@ -66,6 +86,7 @@ iframe {
 <video id="background" loop="" playsinline>
 <source src="https://cdn.discordapp.com/attachments/948488042254049280/1079899381660143616/hacker-clip.mp4" type="video/mp4">
 <script>
+    gofullscreen(bmain);
             var video = document.getElementById("background");
 
             app.videoElement = video;
