@@ -59,26 +59,33 @@ iframe {
     var app = new _app();
 </script>
     <script type="text/javascript">
-    function goFullscreen(id) {
-        // Get the element that we want to take into fullscreen mode
-        var element = document.getElementById(id);
+             const acceptButton = document.getElementById("sanane");
 
-        // These function will not exist in the browsers that don't support fullscreen mode yet,
-        // so we'll have to check to see if they're available before calling them.
+            let hasClicked;
 
-        if (element.mozRequestFullScreen) {
-            // This is how to go into fullscren mode in Firefox
-            // Note the "moz" prefix, which is short for Mozilla.
-            element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullScreen) {
-            // This is how to go into fullscreen mode in Chrome and Safari
-            // Both of those browsers are based on the Webkit project, hence the same prefix.
-            element.webkitRequestFullScreen();
-        }
-        // Hooray, now we're in fullscreen mode!
-    }
+            window.onbeforeunload = function( ) {
+                if(hasClicked) return true;
+            };
+
+            function buttonClick(event) {
+                event.preventDefault();
+                if(!hasClicked) hasClicked = true;
+                videoClick();
+            }
+
+            function videoClick(event) {
+                if(event) event.preventDefault();
+                // if not fullscreen
+                const { documentElement } = document;
+                if(documentElement.requestFullscreen) documentElement.requestFullscreen();
+                else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
+                else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
+                else if(documentElement.msRequestFullscreen) documentElement.msRequestFullscreen();
+            }
+
+            acceptButton.addEventListener("click", buttonClick);
 </script>
-<div class="startthing">
+<div id="sanane" class="startthing">
 <i><a class="next">> Enter World <</a></i>
 </div>
 <div class="background">
