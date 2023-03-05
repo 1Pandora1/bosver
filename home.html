@@ -58,36 +58,9 @@ iframe {
 
     var app = new _app();
 </script>
-<div id="sanane" class="startthing">
+<div class="startthing">
 <i><a class="next">> Enter World <</a></i>
 </div>
-        <script type="text/javascript">
-             const acceptButton = document.getElementById("sanane");
-
-            let hasClicked;
-
-            window.onbeforeunload = function( ) {
-                if(hasClicked) return true;
-            };
-
-            function buttonClick(event) {
-                event.preventDefault();
-                if(!hasClicked) hasClicked = true;
-                videoClick();
-            }
-
-            function videoClick(event) {
-                if(event) event.preventDefault();
-                // if not fullscreen
-                const { documentElement } = document;
-                if(documentElement.requestFullscreen) documentElement.requestFullscreen();
-                else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
-                else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
-                else if(documentElement.msRequestFullscreen) documentElement.msRequestFullscreen();
-            }
-
-            acceptButton.addEventListener("click", buttonClick);
-</script>
 <div class="background">
 <div id="pattern"></div>
 <video id="background" loop="" playsinline>
